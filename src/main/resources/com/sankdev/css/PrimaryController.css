@@ -1,0 +1,35 @@
+.root {
+    base-color: #4f4f4f;
+    button-base-color: #5d5d5d;
+    button-hover-color: #868686;
+    text-fill-light-color: #d4d3d3;
+    -fx-font-size: 14px;
+    -fx-background-color: base-color;
+}
+
+.h-box {
+    -fx-spacing: 10;
+    -fx-alignment: center;
+    -fx-fill-height: false;
+    -fx-padding: 10 10 10 10;
+}
+
+.border-pane {
+    -fx-background-image: url("../images/markus-spiske-zJDqiEGUCHY-unsplash.jpg");
+    -fx-background-size: cover;
+}
+
+.button {
+    -fx-text-alignment: center;
+    -fx-font-size: 14px;
+    -fx-text-fill: text-fill-light-color;
+    -fx-pref-width: 140;
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-background-color: button-base-color;
+    -fx-background-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: button-hover-color;
+}

@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+  styleClass="border-pane" fx:controller="com.sankdev.PrimaryController"
+  stylesheets="@css/PrimaryController.css"
+>
+  <top>
+    <HBox styleClass="h-box" xmlns:fx="http://javafx.com/fxml">
+      <children>
+        <Button fx:id="editButton" text="%editButton">
+        </Button>
+        <Button fx:id="deleteButton" text="%deleteButton">
+        </Button>
+        <Button fx:id="addButton" text="%addButton">
+        </Button>
+        <Button fx:id="saveButton" text="%saveButton">
+        </Button>
+        <Button fx:id="loadButton" text="%loadButton">
+        </Button>
+        <Button fx:id="primaryButton" text="Switch to Secondary View"
+          onAction="#switchToSecondary"/>
+      </children>
+    </HBox>
+  </top>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sankdev.PrimaryController">
-   <children>
-      <Label text="Primary View" />
-      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+</BorderPane>

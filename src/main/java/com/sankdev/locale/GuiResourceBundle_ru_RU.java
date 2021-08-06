@@ -1,4 +1,4 @@
-package com.sankdev.portfolio;
+package com.sankdev.locale;
 
 public class GuiResourceBundle_ru_RU extends GuiResourceBundle {
 

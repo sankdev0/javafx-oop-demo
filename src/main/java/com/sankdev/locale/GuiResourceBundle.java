@@ -1,6 +1,8 @@
-package com.sankdev.portfolio;
+package com.sankdev.locale;
 
-public class GuiResourceBundle_en_US extends GuiResourceBundle {
+import java.util.ListResourceBundle;
+
+public class GuiResourceBundle extends ListResourceBundle {
 
   @Override
   protected Object[][] getContents() {

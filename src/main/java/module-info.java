@@ -4,4 +4,6 @@ module com.sankdev {
 
     opens com.sankdev to javafx.fxml;
     exports com.sankdev;
+  exports com.sankdev.locale;
+  opens com.sankdev.locale to javafx.fxml;
 }
