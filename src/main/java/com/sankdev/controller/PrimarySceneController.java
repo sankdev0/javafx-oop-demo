@@ -1,17 +1,16 @@
-package com.sankdev;
+package com.sankdev.controller;
 
+import com.sankdev.App;
 import com.sankdev.portfolio.Item;
-import com.sankdev.portfolio.Portfolio;
+import com.sankdev.service.PortfolioService;
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class PrimaryController {
+public class PrimarySceneController {
 
   @FXML
   private TableView<Item> tableView;
@@ -20,7 +19,7 @@ public class PrimaryController {
   @FXML
   private TableColumn<Item, String> nameCol;
 
-  public PrimaryController() {
+  public PrimarySceneController() {
     System.out.println("===>>> Inside Primary Controller constructor");
   }
 
@@ -35,12 +34,12 @@ public class PrimaryController {
   private List<Item> parseUserList() {
     // parse and construct User datamodel list by looping your ResultSet rs
     // and return the list
-    Portfolio portfolio = new Portfolio();
-    return portfolio.getItems();
+    PortfolioService portfolioService = new PortfolioService();
+    return portfolioService.getItems();
   }
 
   @FXML
-  private void switchToSecondary() throws IOException {
-    App.setRoot("secondary");
+  private void switchToAddItem() throws IOException {
+    App.setRoot("addItem");
   }
 }

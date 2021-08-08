@@ -1,13 +1,17 @@
-package com.sankdev.portfolio;
+package com.sankdev.dao;
 
+import com.sankdev.portfolio.Certificate;
+import com.sankdev.portfolio.Diploma;
+import com.sankdev.portfolio.Item;
+import com.sankdev.portfolio.Publication;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Portfolio {
+public class PortfolioDAO {
 
   private List<Item> items;
 
-  public Portfolio() {
+  public PortfolioDAO() {
     System.out.println("===>>> Inside Portfolio constructor");
     items = new ArrayList<>();
     items.add(new Certificate("Uni1", "My certificate"));

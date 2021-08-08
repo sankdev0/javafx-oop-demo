@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 <BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-  styleClass="border-pane" fx:controller="com.sankdev.PrimaryController"
+  styleClass="border-pane" fx:controller="com.sankdev.controller.PrimarySceneController"
   stylesheets="@css/PrimaryController.css"
 >
   <top>
@@ -17,14 +17,12 @@
         </Button>
         <Button fx:id="deleteButton" text="%deleteButton">
         </Button>
-        <Button fx:id="addButton" text="%addButton">
+        <Button fx:id="addButton" text="%addButton" onAction="#switchToAddItem">
         </Button>
         <Button fx:id="saveButton" text="%saveButton">
         </Button>
         <Button fx:id="loadButton" text="%loadButton">
         </Button>
-        <Button fx:id="primaryButton" text="Switch to Secondary View"
-          onAction="#switchToSecondary"/>
       </children>
     </HBox>
   </top>
