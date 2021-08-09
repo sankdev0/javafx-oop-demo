@@ -19,12 +19,9 @@ public class PrimarySceneController {
   @FXML
   private TableColumn<Item, String> nameCol;
 
-  public PrimarySceneController() {
-    System.out.println("===>>> Inside Primary Controller constructor");
-  }
+  public PrimarySceneController() {  }
 
   public void initialize() {
-    System.out.println("===>>> Inside Primary Controller initialize() method");
     idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
     nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 

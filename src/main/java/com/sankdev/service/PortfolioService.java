@@ -9,7 +9,7 @@ public class PortfolioService {
   private PortfolioDAO portfolioDAO;
 
   public PortfolioService() {
-    this.portfolioDAO = new PortfolioDAO();
+    this.portfolioDAO = PortfolioDAO.getInstance();
   }
 
   public List<Item> getItems() {
