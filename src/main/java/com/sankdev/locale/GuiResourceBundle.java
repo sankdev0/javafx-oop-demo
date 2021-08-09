@@ -12,8 +12,7 @@ public class GuiResourceBundle extends ListResourceBundle {
         {"okKey", "OK"}, {"cancelKey", "Cancel"}, {"editButton", "Edit"},
         {"deleteButton", "Delete"},
         {"addButton", "Create"}, {"saveButton", "Save"}, {"loadButton", "Load"},
-        {"addItemText", "Add new Portfolio item details:"},
-        {"cancelButton", "Cancel"}
+        {"addItemText", "Add new Portfolio item details:"}
         // END OF MATERIAL TO LOCALIZE
     };
   }

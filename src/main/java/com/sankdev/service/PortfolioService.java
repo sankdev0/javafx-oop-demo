@@ -16,4 +16,8 @@ public class PortfolioService {
     return this.portfolioDAO.getItems();
   }
 
+  public void addItem(Item item) {
+    portfolioDAO.addItem(item);
+  }
+
 }
