@@ -1,3 +1,4 @@
+/* define global variables and common styles for root*/
 .root {
     base-color: #4f4f4f;
     button-base-color: #5d5d5d;
@@ -7,17 +8,35 @@
     -fx-background-color: base-color;
 }
 
+.border-pane {
+    -fx-background-image: url("../images/markus-spiske-zJDqiEGUCHY-unsplash.jpg");
+    -fx-background-size: cover;
+}
+
+.label {
+    -fx-text-fill: text-fill-light-color;
+}
+
 .h-box {
+    -fx-text-fill: text-fill-light-color;
     -fx-spacing: 10;
     -fx-alignment: center;
     -fx-fill-height: false;
     -fx-padding: 10 10 10 10;
 }
 
-.border-pane {
-    -fx-background-image: url("../images/markus-spiske-zJDqiEGUCHY-unsplash.jpg");
-    -fx-background-size: cover;
+.table-view {
+    -fx-background-color: transparent;
 }
+
+.v-box {
+    -fx-text-fill: text-fill-light-color;
+    -fx-spacing: 10;
+    -fx-alignment: center;
+    -fx-fill-height: false;
+    -fx-padding: 10 10 10 10;
+}
+
 
 .button {
     -fx-text-alignment: center;

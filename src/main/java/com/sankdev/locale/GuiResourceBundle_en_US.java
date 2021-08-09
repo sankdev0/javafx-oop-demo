@@ -9,7 +9,9 @@ public class GuiResourceBundle_en_US extends GuiResourceBundle {
         {"appTitle", "Student works portfolio tracking"}, {"editWindowTitle", "Edit item"},
         {"okKey", "OK"}, {"cancelKey", "Cancel"}, {"editButton", "Edit"},
         {"deleteButton", "Delete"},
-        {"addButton", "Create"}, {"saveButton", "Save"}, {"loadButton", "Load"}
+        {"addButton", "Create"}, {"saveButton", "Save"}, {"loadButton", "Load"},
+        {"addItemText", "Add new Portfolio item details:"},
+        {"cancelButton", "Cancel"}
         // END OF MATERIAL TO LOCALIZE
     };
   }
