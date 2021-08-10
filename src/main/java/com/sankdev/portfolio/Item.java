@@ -1,8 +1,9 @@
 package com.sankdev.portfolio;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Item {
+public abstract class Item implements Serializable {
 
   private String id;
 

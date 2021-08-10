@@ -8,6 +8,9 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
+/**
+ * Controller for adding a new portfolio item.
+ */
 public class AddItemController {
 
   private static final PortfolioService portfolioService = new PortfolioService();

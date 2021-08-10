@@ -4,10 +4,18 @@ import com.sankdev.portfolio.Certificate;
 import com.sankdev.portfolio.Diploma;
 import com.sankdev.portfolio.Item;
 import com.sankdev.portfolio.Publication;
-import java.io.ObjectStreamException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * For the demo purposes it is a singleton now. Serves as an in-memory storage foe a list of
@@ -17,23 +25,43 @@ public class PortfolioDAO implements Serializable {
 
   private static final long serialVersionUID = -760476693155737115L;
 
-  private static final PortfolioDAO INSTANCE = new PortfolioDAO();
+  private static volatile PortfolioDAO INSTANCE = new PortfolioDAO();
 
-  private List<Item> items;
-
-  // this is to ensure the Singleton instance is deserialized properly
-  protected Object readResolve() throws ObjectStreamException {
-    return INSTANCE;
+  public void setObservableItems(
+      ObservableList<Item> observableItems) {
+    this.observableItems = observableItems;
   }
 
+  private transient ObservableList<Item> observableItems;
+
+  private void writeObject(ObjectOutputStream oos)
+      throws IOException {
+    oos.defaultWriteObject();
+    List<Item> items = new ArrayList<>(observableItems);
+    oos.writeObject(items);
+  }
+
+  private void readObject(ObjectInputStream ois)
+      throws ClassNotFoundException, IOException {
+    ois.defaultReadObject();
+    List<Item> items = (List<Item>) ois.readObject();
+    ObservableList<Item> observableList = FXCollections.observableList(items);
+    this.setObservableItems(observableList);
+  }
+
+  // this is to ensure the Singleton instance is deserialized properly
+  //protected Object readResolve() throws ObjectStreamException {
+  //  return INSTANCE;
+  //}
+
   private PortfolioDAO() {
-    System.out.println("===>>> Inside Portfolio constructor");
-    items = new ArrayList<>();
-    items.add(new Certificate("Uni1", "My certificate"));
-    items.add(new Diploma("Uni2", "Higher degree"));
-    items.add(new Publication("1234", "Nature magazine article"));
+    System.out.println("===>>> Inside Portfolio constructor. Adding sample data.");
+    observableItems = FXCollections.observableArrayList();
+    observableItems.add(new Certificate("Uni1", "My certificate"));
+    observableItems.add(new Diploma("Uni2", "Higher degree"));
+    observableItems.add(new Publication("1234", "Nature magazine article"));
     for (Item tempItem :
-        items) {
+        observableItems) {
       System.out.println(tempItem);
     }
   }
@@ -42,17 +70,33 @@ public class PortfolioDAO implements Serializable {
     return INSTANCE;
   }
 
-  public List<Item> getItems() {
-    return items;
+  public ObservableList<Item> getObservableItems() {
+    return observableItems;
   }
 
   public void addItem(Item item) {
-    if (items == null) {
-      items = new ArrayList<> ();
+    if (observableItems == null) {
+      observableItems = FXCollections.observableArrayList();
     }
 
-    items.add(item);
+    observableItems.add(item);
   }
+
+  public void writePortfolio() throws IOException {
+    String fileName = "C:\\repos\\javafx-oop-demo-files\\portfolio.ser";
+    ObjectOutput objectOutput = new ObjectOutputStream(new FileOutputStream(fileName));
+    objectOutput.writeObject(INSTANCE);
+    objectOutput.flush();
+    objectOutput.close();
+  }
+
+  public void readPortfolio() throws IOException, ClassNotFoundException {
+    String fileName = "C:\\repos\\javafx-oop-demo-files\\portfolio.ser";
+    ObjectInput objectInput = new ObjectInputStream(new FileInputStream(fileName));
+    INSTANCE = (PortfolioDAO) objectInput.readObject();
+    objectInput.close();
+  }
+
 
 
 }

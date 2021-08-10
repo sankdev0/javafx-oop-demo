@@ -3,7 +3,7 @@ package com.sankdev.controller;
 import com.sankdev.portfolio.Item;
 
 /**
- * This singleton is used to carry portfolio item data between controllers. It is lazy-loaded and
+ * This singleton is used to carry portfolio item data between controllers. It is eager-loaded and
  * reused.
  */
 public class ItemHolder {

@@ -1,10 +1,11 @@
 /* define global variables and common styles for root*/
 .root {
     base-color: #4f4f4f;
+    base-color: #4f4f4f;
     button-base-color: #5d5d5d;
     button-hover-color: #868686;
     text-fill-light-color: #d4d3d3;
-    -fx-font-size: 14px;
+    -fx-font-size: 10px;
     -fx-background-color: base-color;
 }
 
@@ -27,6 +28,10 @@
 
 .table-view {
     -fx-background-color: transparent;
+    -fx-spacing: 10;
+    -fx-alignment: center;
+    -fx-fill-height: false;
+    -fx-padding: 10 10 10 10;
 }
 
 .v-box {
@@ -40,7 +45,7 @@
 
 .button {
     -fx-text-alignment: center;
-    -fx-font-size: 14px;
+    -fx-font-size: 10px;
     -fx-text-fill: text-fill-light-color;
     -fx-pref-width: 140;
     -fx-border-color: black;
