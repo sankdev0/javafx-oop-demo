@@ -18,8 +18,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- * For the demo purposes it is a singleton now. Serves as an in-memory storage foe a list of
- * portfolio items. NOTE: Eager Loaded!
+ * DAO container serves as an in-memory storage for a list of portfolio items. For the demo
+ * purposes it is a singleton now. NOTE: Eager Loaded!
  */
 public class PortfolioDAO implements Serializable {
 
@@ -27,32 +27,8 @@ public class PortfolioDAO implements Serializable {
 
   private static volatile PortfolioDAO INSTANCE = new PortfolioDAO();
 
-  public void setObservableItems(
-      ObservableList<Item> observableItems) {
-    this.observableItems = observableItems;
-  }
-
+  // Observable type to track changes in a corresponding GUI view
   private transient ObservableList<Item> observableItems;
-
-  private void writeObject(ObjectOutputStream oos)
-      throws IOException {
-    oos.defaultWriteObject();
-    List<Item> items = new ArrayList<>(observableItems);
-    oos.writeObject(items);
-  }
-
-  private void readObject(ObjectInputStream ois)
-      throws ClassNotFoundException, IOException {
-    ois.defaultReadObject();
-    List<Item> items = (List<Item>) ois.readObject();
-    ObservableList<Item> observableList = FXCollections.observableList(items);
-    this.setObservableItems(observableList);
-  }
-
-  // this is to ensure the Singleton instance is deserialized properly
-  //protected Object readResolve() throws ObjectStreamException {
-  //  return INSTANCE;
-  //}
 
   private PortfolioDAO() {
     System.out.println("===>>> Inside Portfolio constructor. Adding sample data.");
@@ -74,11 +50,41 @@ public class PortfolioDAO implements Serializable {
     return observableItems;
   }
 
-  public void addItem(Item item) {
+  public void setObservableItems(
+      ObservableList<Item> observableItems) {
+    this.observableItems = observableItems;
+  }
+
+  // for Custom Serialization
+  private void writeObject(ObjectOutputStream oos)
+      throws IOException {
+    oos.defaultWriteObject();
+    List<Item> items = new ArrayList<>(observableItems);
+    oos.writeObject(items);
+  }
+
+  // for Custom Serialization
+  private void readObject(ObjectInputStream ois)
+      throws ClassNotFoundException, IOException {
+    ois.defaultReadObject();
+    @SuppressWarnings("unchecked")
+    List<Item> items = (List<Item>) ois.readObject();
+    ObservableList<Item> observableList = FXCollections.observableList(items);
+    this.setObservableItems(observableList);
+  }
+
+
+  /* this is to ensure the Singleton instance is deserialized properly
+  protected Object readResolve() throws ObjectStreamException {
+    return INSTANCE;
+  }
+   */
+
+
+  public void addObservableItem(Item item) {
     if (observableItems == null) {
       observableItems = FXCollections.observableArrayList();
     }
-
     observableItems.add(item);
   }
 
@@ -96,7 +102,5 @@ public class PortfolioDAO implements Serializable {
     INSTANCE = (PortfolioDAO) objectInput.readObject();
     objectInput.close();
   }
-
-
 
 }

@@ -37,7 +37,7 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-  private static ResourceBundle theGuiResourceBundle = ResourceBundle.getBundle(
+  private static final ResourceBundle theGuiResourceBundle = ResourceBundle.getBundle(
       "com.sankdev.locale.GuiResourceBundle", Locale.getDefault());
 
   private static Scene scene;

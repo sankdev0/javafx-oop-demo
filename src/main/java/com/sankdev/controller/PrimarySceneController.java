@@ -6,7 +6,6 @@ import com.sankdev.service.PortfolioService;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -19,6 +18,7 @@ public class PrimarySceneController {
 
   private final PortfolioService portfolioService = new PortfolioService();
 
+  // Primary scene control bindings
   @FXML
   private TableView<Item> tableView;
   @FXML
@@ -29,21 +29,12 @@ public class PrimarySceneController {
   public PrimarySceneController() {
   }
 
+  // Automatically called by FXML Loader
   public void initialize() {
     idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
     nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-    tableView.setItems(parseUserList());
-  }
-
-  /**
-   * Returns the default demo portfolio item observable list
-   * @return
-   */
-  private ObservableList<Item> parseUserList() {
-    // parse and construct datamodel list by looping your ResultSet rs
-    // and return the list
-    return portfolioService.getItems();
+    tableView.setItems(portfolioService.getPortfolioItems());
   }
 
   @FXML
@@ -60,13 +51,15 @@ public class PrimarySceneController {
   private void readPortfolio() throws IOException, ClassNotFoundException {
     portfolioService.readPortfolio();
     System.out.println("===>>> Test observable list");
-    System.out.println(portfolioService.getItems());
+    System.out.println(portfolioService.getPortfolioItems());
     System.out.println("===>>> Reading the portfolio");
-    List<Item> items = new ArrayList<>(parseUserList());
+    List<Item> items = new ArrayList<>(portfolioService.getPortfolioItems());
     for (Item tempItem :
         items) {
       System.out.println("Item read: " + tempItem.getId() + " " + tempItem.getName());
     }
-    tableView.setItems(parseUserList());
+    // TODO find out why this is necessary. Probably because PortfolioDAO INSTANCE is substituted
+    //  when deserialized
+    tableView.setItems(portfolioService.getPortfolioItems());
   }
 }

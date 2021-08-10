@@ -29,7 +29,7 @@ public class AddItemController {
   @FXML
   private void saveItem() throws IOException {
     Item newItem = new Publication(this.newItemId.getText(), this.newItemName.getText());
-    portfolioService.addItem(newItem);
+    portfolioService.addPortfolioItem(newItem);
     App.setRoot("primary");
   }
 }

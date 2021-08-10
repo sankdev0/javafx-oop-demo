@@ -13,12 +13,12 @@ public class PortfolioService {
     this.portfolioDAO = PortfolioDAO.getInstance();
   }
 
-  public ObservableList<Item> getItems() {
+  public ObservableList<Item> getPortfolioItems() {
     return this.portfolioDAO.getObservableItems();
   }
 
-  public void addItem(Item item) {
-    portfolioDAO.addItem(item);
+  public void addPortfolioItem(Item item) {
+    portfolioDAO.addObservableItem(item);
   }
 
   public void writePortfolio() throws IOException {

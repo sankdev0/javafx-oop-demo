@@ -31,7 +31,11 @@
     -fx-spacing: 10;
     -fx-alignment: center;
     -fx-fill-height: false;
-    -fx-padding: 10 10 10 10;
+    -fx-padding: 0 10 10 10;
+}
+
+.table-column {
+  -fx-background-color: transparent;
 }
 
 .v-box {
