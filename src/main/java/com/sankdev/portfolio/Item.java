@@ -1,17 +1,52 @@
 package com.sankdev.portfolio;
 
 import java.io.Serializable;
+import java.time.Year;
 import java.util.Objects;
+import java.util.UUID;
 
 public abstract class Item implements Serializable {
 
   private String id;
-
   private String name;
+  private Year year;
+  private String description;
 
-  public Item(String id, String name) {
-    this.id = id;
+  public Item(String id, String name, Year year, String description) {
+    if (id == "" ) {
+      this.id = UUID.randomUUID().toString();
+    } else {
+      this.id = id;
+    }
     this.name = name;
+    this.year = year;
+    this.description = description;
+  }
+
+  public Item(String id, String name, Year year) {
+    if (id == "" ) {
+      this.id = UUID.randomUUID().toString();
+    } else {
+      this.id = id;
+    }
+    this.name = name;
+    this.year = year;
+  }
+
+  public Year getYear() {
+    return year;
+  }
+
+  public void setYear(Year year) {
+    this.year = year;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public String getId() {
@@ -39,19 +74,12 @@ public abstract class Item implements Serializable {
       return false;
     }
     Item item = (Item) o;
-    return id.equals(item.id) && name.equals(item.name);
+    return id.equals(item.id) && name.equals(item.name) && year.equals(item.year)
+        && Objects.equals(description, item.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
-  }
-
-  @Override
-  public String toString() {
-    return "Item{" +
-        "id='" + id + '\'' +
-        ", name='" + name + '\'' +
-        '}';
+    return Objects.hash(id, name, year, description);
   }
 }

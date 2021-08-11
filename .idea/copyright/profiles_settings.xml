@@ -1,5 +1,5 @@
 <component name="CopyrightManager">
-  <settings>
+  <settings default="sank-mit">
     <module2copyright>
       <element module="All" copyright="sank-mit" />
     </module2copyright>

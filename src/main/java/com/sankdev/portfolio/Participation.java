@@ -1,8 +1,10 @@
 package com.sankdev.portfolio;
 
-public class Participation extends Achievement {
+import java.time.Year;
 
-  public Participation(String id, String name) {
-    super(id, name);
+public class Participation extends Item {
+
+  public Participation(String id, String name, Year year, String description) {
+    super(id, name, year, description);
   }
 }

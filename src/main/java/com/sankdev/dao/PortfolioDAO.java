@@ -2,6 +2,7 @@ package com.sankdev.dao;
 
 import com.sankdev.portfolio.Certificate;
 import com.sankdev.portfolio.Diploma;
+import com.sankdev.portfolio.Diploma.Degree;
 import com.sankdev.portfolio.Item;
 import com.sankdev.portfolio.Publication;
 import java.io.FileInputStream;
@@ -12,6 +13,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -33,9 +35,12 @@ public class PortfolioDAO implements Serializable {
   private PortfolioDAO() {
     System.out.println("===>>> Inside Portfolio constructor. Adding sample data.");
     observableItems = FXCollections.observableArrayList();
-    observableItems.add(new Certificate("Uni1", "My certificate"));
-    observableItems.add(new Diploma("Uni2", "Higher degree"));
-    observableItems.add(new Publication("1234", "Nature magazine article"));
+    observableItems.add(new Certificate("x26-1122", "Сертификат по курсу \" Бухгалтерия 1С\"",
+        Year.of(2016), "Институт 1С"));
+    observableItems.add(new Diploma("ВОУ111222", "Диплом о высшем профессиональном образовании",
+        Year.of(2014), "Оренбургский Государственный Университет", Degree.HIGHER));
+    observableItems.add(new Publication("ESPN8080009", "Использование 1С в бухгалтерском учете",
+        Year.of(2018), "Эксперт", 2_000));
     for (Item tempItem :
         observableItems) {
       System.out.println(tempItem);

@@ -2,10 +2,11 @@ package com.sankdev.controller;
 
 import com.sankdev.App;
 import com.sankdev.model.ItemHolder;
+import com.sankdev.portfolio.Certificate;
 import com.sankdev.portfolio.Item;
-import com.sankdev.portfolio.Publication;
 import com.sankdev.service.PortfolioService;
 import java.io.IOException;
+import java.time.Year;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -45,7 +46,8 @@ public class EditItemController {
       editedItem.setId(this.itemId.getText());
       editedItem.setName(this.itemName.getText());
     } else {
-      Item newItem = new Publication(this.itemId.getText(), this.itemName.getText());
+      Item newItem = new Certificate(this.itemId.getText(), this.itemName.getText(),
+          Year.of(2019), "Синергия");
       portfolioService.addPortfolioItem(newItem);
     }
     App.setRoot(App.PRIMARY_VIEW);
