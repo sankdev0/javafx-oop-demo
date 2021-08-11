@@ -14,7 +14,7 @@
       <children>
         <Button fx:id="editButton" text="%editButton" onAction="#onEdit">
         </Button>
-        <Button fx:id="deleteButton" text="%deleteButton">
+        <Button fx:id="deleteButton" text="%deleteButton" onAction="#onDelete">
         </Button>
         <Button fx:id="addButton" text="%addButton" onAction="#onAdd">
         </Button>

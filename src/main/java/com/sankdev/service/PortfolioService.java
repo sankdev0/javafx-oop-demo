@@ -30,4 +30,7 @@ public class PortfolioService {
     this.portfolioDAO = PortfolioDAO.getInstance();
   }
 
+  public void deleteItem(Item item) {
+    portfolioDAO.deleteItem(item);
+  }
 }

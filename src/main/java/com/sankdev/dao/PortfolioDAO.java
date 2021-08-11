@@ -103,4 +103,7 @@ public class PortfolioDAO implements Serializable {
     objectInput.close();
   }
 
+  public void deleteItem(Item item) {
+    observableItems.remove(item);
+  }
 }

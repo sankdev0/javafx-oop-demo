@@ -73,4 +73,11 @@ public class PrimarySceneController {
       App.setRoot(App.EDIT_ITEM_VIEW);
     }
   }
+
+  public void onDelete() {
+    if (tableView.getSelectionModel().getSelectedItem() != null) {
+      Item selectedItem = tableView.getSelectionModel().getSelectedItem();
+      portfolioService.deleteItem(selectedItem);
+    }
+  }
 }
