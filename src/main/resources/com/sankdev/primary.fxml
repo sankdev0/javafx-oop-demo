@@ -12,11 +12,11 @@
   <top>
     <HBox styleClass="h-box" xmlns:fx="http://javafx.com/fxml">
       <children>
-        <Button fx:id="editButton" text="%editButton">
+        <Button fx:id="editButton" text="%editButton" onAction="#onEdit">
         </Button>
         <Button fx:id="deleteButton" text="%deleteButton">
         </Button>
-        <Button fx:id="addButton" text="%addButton" onAction="#switchToAddItem">
+        <Button fx:id="addButton" text="%addButton" onAction="#onAdd">
         </Button>
         <Button fx:id="saveButton" text="%saveButton" onAction="#writePortfolio">
         </Button>

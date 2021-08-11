@@ -1,4 +1,4 @@
-package com.sankdev.controller;
+package com.sankdev.model;
 
 import com.sankdev.portfolio.Item;
 

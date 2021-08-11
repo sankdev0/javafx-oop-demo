@@ -9,14 +9,14 @@
 <?import javafx.scene.control.TextField?>
 <VBox alignment="TOP_LEFT" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171"
   xmlns:fx="http://javafx.com/fxml/1"
-  fx:controller="com.sankdev.controller.AddItemController"
+  fx:controller="com.sankdev.controller.EditItemController"
 stylesheets="@css/base.css">
     <children>
         <Label text="%addItemText" />
         <Label text="ID: " />
-        <TextField fx:id="newItemId" />
+        <TextField fx:id="itemId" />
         <Label text="NAME: " />
-        <TextField fx:id="newItemName" />
+        <TextField fx:id="itemName" />
         <HBox>
             <Button fx:id="okButton" text="%okKey" onAction="#saveItem"/>
             <Button fx:id="cancelButton" text="%cancelKey" onAction="#switchToPrimary" />

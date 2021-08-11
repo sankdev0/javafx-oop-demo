@@ -1,6 +1,7 @@
 package com.sankdev.controller;
 
 import com.sankdev.App;
+import com.sankdev.model.ItemHolder;
 import com.sankdev.portfolio.Item;
 import com.sankdev.service.PortfolioService;
 import java.io.IOException;
@@ -15,7 +16,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * The Primary controller for the primary scene, i.e. the Application Main Window layout.
  */
 public class PrimarySceneController {
-
+  // Model
+  private final ItemHolder itemHolder = ItemHolder.getInstance();
   private final PortfolioService portfolioService = new PortfolioService();
 
   // Primary scene control bindings
@@ -38,8 +40,9 @@ public class PrimarySceneController {
   }
 
   @FXML
-  private void switchToAddItem() throws IOException {
-    App.setRoot("addItem");
+  private void onAdd() throws IOException {
+    itemHolder.setItem(null);
+    App.setRoot(App.EDIT_ITEM_VIEW);
   }
 
   @FXML
@@ -61,5 +64,13 @@ public class PrimarySceneController {
     // TODO find out why this is necessary. Probably because PortfolioDAO INSTANCE is substituted
     //  when deserialized
     tableView.setItems(portfolioService.getPortfolioItems());
+  }
+
+  public void onEdit() throws IOException {
+    if (tableView.getSelectionModel().getSelectedItem() != null) {
+      Item selectedItem = tableView.getSelectionModel().getSelectedItem();
+      itemHolder.setItem(selectedItem);
+      App.setRoot(App.EDIT_ITEM_VIEW);
+    }
   }
 }

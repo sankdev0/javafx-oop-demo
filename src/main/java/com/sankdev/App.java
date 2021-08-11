@@ -37,6 +37,9 @@ import java.io.IOException;
  */
 public class App extends Application {
 
+  public static final String PRIMARY_VIEW = "primary";
+  public static final String EDIT_ITEM_VIEW = "editItem";
+
   private static final ResourceBundle theGuiResourceBundle = ResourceBundle.getBundle(
       "com.sankdev.locale.GuiResourceBundle", Locale.getDefault());
 

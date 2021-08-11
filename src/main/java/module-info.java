@@ -7,4 +7,6 @@ module com.sankdev {
   opens com.sankdev.dao to javafx.base;
   exports com.sankdev.controller;
   opens com.sankdev.controller to javafx.fxml;
+  exports com.sankdev.model;
+  opens com.sankdev.model to javafx.fxml;
 }
