@@ -16,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * The Primary controller for the primary scene, i.e. the Application Main Window layout.
  */
 public class PrimarySceneController {
+
   // Model
   private final ItemHolder itemHolder = ItemHolder.getInstance();
   private final PortfolioService portfolioService = new PortfolioService();
@@ -37,6 +38,7 @@ public class PrimarySceneController {
     nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 
     tableView.setItems(portfolioService.getPortfolioItems());
+
   }
 
   @FXML

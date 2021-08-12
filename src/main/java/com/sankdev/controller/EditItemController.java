@@ -8,7 +8,10 @@ import com.sankdev.service.PortfolioService;
 import java.io.IOException;
 import java.time.Year;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 
 /**
  * Controller for adding a new portfolio item.
@@ -20,10 +23,13 @@ public class EditItemController {
   private static final PortfolioService portfolioService = new PortfolioService();
 
   @FXML
-  public TextField itemId;
-
+  private Node root;
   @FXML
-  public TextField itemName;
+  private TextField itemId;
+  @FXML
+  private TextField itemName;
+  @FXML
+  private Button okButton;
 
   // Automatically called by FXML Loader
   // NOTE: Good place to hook onto the model
@@ -32,6 +38,22 @@ public class EditItemController {
       this.itemId.setText(itemHolder.getItem().getId());
       this.itemName.setText(itemHolder.getItem().getName());
     }
+    setDefaultKeyHandling(root);
+    setDefaultKeyHandling(okButton);
+  }
+
+  private void setDefaultKeyHandling(Node node) {
+    node.setOnKeyPressed(keyEvent -> {
+      try {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+          saveItem();
+        } else if (keyEvent.getCode() == KeyCode.ESCAPE) {
+          switchToPrimary();
+        }
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    });
   }
 
   @FXML
