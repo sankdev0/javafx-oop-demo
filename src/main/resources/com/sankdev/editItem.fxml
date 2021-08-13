@@ -15,8 +15,11 @@
             <Label styleClass="form-header" text="%editItemText"/>
             <VBox>
                 <Label text="%itemTypeLabel" />
-                <ComboBox fx:id="itemType">
+                <ComboBox fx:id="itemType" prefWidth="200">
                 </ComboBox>
+                <padding>
+                    <Insets top="20.0" bottom="30.0"/>
+                </padding>
             </VBox>
             <HBox styleClass="h-box">
                 <VBox styleClass="v-box">
@@ -39,7 +42,7 @@
                     <!-- Diploma -->
                     <VBox>
                         <Label text="%itemDegreeLevelLabel" />
-                        <ComboBox fx:id="itemDegreeLevel">
+                        <ComboBox fx:id="itemDegreeLevel" prefWidth="200">
                         </ComboBox>
                     </VBox>
                     <!-- Publication -->

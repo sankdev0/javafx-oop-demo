@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
+<?import javafx.geometry.Insets?>
 <BorderPane fx:id="primaryBorderPane" xmlns="http://javafx.com/javafx/16-ea+2" xmlns:fx="http://javafx.com/fxml/1"
   styleClass="border-pane" fx:controller="com.sankdev.controller.PrimarySceneController"
   stylesheets="@css/base.css"
 >
   <top>
     <HBox styleClass="h-box" xmlns:fx="http://javafx.com/fxml">
-      <children>
         <Button fx:id="addButton" text="%addButton" onAction="#onAdd">
         </Button>
         <Button fx:id="editButton" text="%editButton" onAction="#onEdit">
@@ -22,7 +22,9 @@
         </Button>
         <Button fx:id="loadButton" text="%loadButton" onAction="#readPortfolio">
         </Button>
-      </children>
+      <padding>
+        <Insets bottom="20.0"/>
+      </padding>
     </HBox>
   </top>
   <center>

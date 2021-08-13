@@ -4,6 +4,7 @@ Naming notes:
 "-light-color" means the light color theme.*/
 .root {
     base-dark-color: #3c3f41;
+    base-darker-color: #303334;
     border-light-color: #c7c7c7;
     button-dark-color: #494949;
     button-hover-dark-color: #7c7c7c;
@@ -11,7 +12,7 @@ Naming notes:
     table-row-light-color: #505050;
     table-row-selected-color: #3c3f41;
     scrollbar-dark-color: #7c7c7c;
-    text-filed-background-color: #656565;
+    text-field-background-color: #656565;
     text-fill-light-color: #d3d3d3;
     text-fill-highlighted-color: #ffffff;
     -fx-font-size: 11px;
@@ -64,10 +65,8 @@ Naming notes:
 /* 2. Headers */
 /* The table header column background spanning the whole table width. */
 .table-view .column-header-background{
-    -fx-background-color: base-dark-color;
+    -fx-background-color: base-darker-color;
     -fx-background-radius: 3px 3px 0px 0px;
-    -fx-background-insets: 0 3 0 3;
-    -fx-padding: 3px 0 3px 0;
 }
 
 /* Individual column headers on top of the table header column background. */
@@ -159,13 +158,31 @@ Naming notes:
 }
 
 .text-field {
-    -fx-background-color: text-filed-background-color;
+    -fx-background-color: text-field-background-color;
     -fx-text-fill: text-fill-light-color;
 }
 
 .form-header {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: text-field-background-color;
+    -fx-text-fill: text-fill-light-color;
+}
+
+.combo-box .list-view .list-cell {
+    -fx-background-color: text-field-background-color;
+    -fx-text-fill: text-fill-light-color;
+}
+
+.combo-box-base .arrow-button {
+    -fx-background-color: text-field-background-color;
+}
+
+.combo-box-base .arrow {
+    -fx-background-color: base-darker-color;
 }
 
 
