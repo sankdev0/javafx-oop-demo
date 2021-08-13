@@ -8,7 +8,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ScrollPane?>
-<ScrollPane xmlns="http://javafx.com/javafx/11.0.4" xmlns:fx="http://javafx.com/fxml/1"
+<ScrollPane xmlns="http://javafx.com/javafx/16-ea+2" xmlns:fx="http://javafx.com/fxml/1"
   stylesheets="@css/base.css" fx:controller="com.sankdev.controller.EditItemController">
     <VBox styleClass="v-box" fx:id="editVBox">
         <VBox styleClass="v-box">
