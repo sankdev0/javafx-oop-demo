@@ -23,7 +23,7 @@ public class EditItemController {
   private static final PortfolioService portfolioService = new PortfolioService();
 
   @FXML
-  private Node root;
+  private Node editVBox;
   @FXML
   private TextField itemId;
   @FXML
@@ -38,7 +38,7 @@ public class EditItemController {
       this.itemId.setText(itemHolder.getItem().getId());
       this.itemName.setText(itemHolder.getItem().getName());
     }
-    setDefaultKeyHandling(root);
+    setDefaultKeyHandling(editVBox);
     setDefaultKeyHandling(okButton);
   }
 

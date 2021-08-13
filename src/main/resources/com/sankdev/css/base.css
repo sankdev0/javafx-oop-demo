@@ -1,33 +1,43 @@
-/* define global variables and common styles for root*/
+/* define global variables and common styles for root
+Naming notes:
+"-dark-color" means the dark color theme;
+"-light-color" means the light color theme.*/
 .root {
-    base-color: #4f4f4f;
-    button-base-color: #5d5d5d;
-    button-hover-color: #868686;
-    text-fill-light-color: #d4d3d3;
-    text-fill-dark-color: #303030;
-    -fx-font-size: 10px;
-    -fx-background-color: base-color;
+    base-dark-color: #3c3f41;
+    border-light-color: #c7c7c7;
+    button-dark-color: #494949;
+    button-hover-dark-color: #7c7c7c;
+    table-row-dark-color: #494949;
+    table-row-light-color: #505050;
+    table-row-selected-color: #3c3f41;
+    scrollbar-dark-color: #7c7c7c;
+    text-filed-background-color: #656565;
+    text-fill-light-color: #d3d3d3;
+    text-fill-highlighted-color: #ffffff;
+    -fx-font-size: 11px;
 }
 
 .border-pane {
-    /* -fx-background-image: url("../images/markus-spiske-zJDqiEGUCHY-unsplash.jpg"); */
-    -fx-background-size: cover;
+    -fx-background-color: base-dark-color;
+    -fx-text-fill: text-fill-light-color;
+    -fx-padding: 3 3 3 3;
 }
 
 .v-box {
+    -fx-background-color: base-dark-color;
     -fx-text-fill: text-fill-light-color;
-    -fx-spacing: 10;
-    -fx-alignment: center;
+    -fx-alignment: top-left;
     -fx-fill-height: false;
-    -fx-padding: 10 10 10 10;
+    -fx-spacing: 3;
+    -fx-padding: 3;
 }
 
 .h-box {
+    -fx-background-color: base-dark-color;
     -fx-text-fill: text-fill-light-color;
-    -fx-spacing: 10;
-    -fx-alignment: center;
+    -fx-alignment: top-left;
     -fx-fill-height: false;
-    -fx-padding: 10 10 10 10;
+    -fx-spacing: 3;
 }
 
 .table-view {
@@ -48,10 +58,10 @@
 /* 2. Headers */
 /* The table header column background spanning the whole table width. */
 .table-view .column-header-background{
-    -fx-background-color: linear-gradient(to bottom, #1dbbdd44, #93f9b944);
-    -fx-background-radius: 7px 7px 0px 0px;
-    -fx-background-insets: 0 11px 0 0;
-    -fx-padding: 0 0 5px 0;
+    -fx-background-color: base-dark-color;
+    -fx-background-radius: 3px 3px 0px 0px;
+    -fx-background-insets: 0 3 0 3;
+    -fx-padding: 3px 0 3px 0;
 }
 
 /* Individual column headers on top of the table header column background. */
@@ -64,22 +74,34 @@
 .table-view .table-cell{
     -fx-text-fill: text-fill-light-color;
     -fx-border-color: transparent;
-    -fx-padding: 2 0 2 10px;
+    -fx-padding: 2 0 2 5px;
 }
 
-.table-row-cell: hover {
-    -fx-background-color: #C4513F11;
-    -fx-text-background-color: red;
+/*noinspection SyntaxError*/
+.table-view .table-row-cell:hover {
+    -fx-background-color: button-hover-dark-color;
+    -fx-text-fill: text-fill-highlighted-color;
 }
-.table-row-cell: odd{
-    -fx-background-color: #E8F1EC11;
-    -fx-background-insets: 0, 0 0 1 0;
+
+/*noinspection SyntaxError*/
+.table-view .table-row-cell:odd{
+    -fx-background-color: table-row-light-color;
+    -fx-background-insets: 0, 0 3 0 3;
     -fx-padding: 0.0em;
 }
-.table-row-cell: even{
-    -fx-background-color: #09ABCE11;
-    -fx-background-insets: 0, 0 0 1 0;
+
+/*noinspection SyntaxError*/
+.table-view .table-row-cell:even{
+    -fx-background-color: table-row-dark-color;
+    -fx-background-insets: 0, 0 3 0 3;
     -fx-padding: 0.0em;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: table-row-selected-color;
+    -fx-text-fill: text-fill-highlighted-color;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
 }
 
 /* 4. Scrollbars */
@@ -101,11 +123,9 @@
 }
 
 /* Scrollbar itself = thumb */
-.table-view .virtual-flow .scroll-bar:vertical .thumb{
-    -fx-background-color:  linear-gradient(to bottom, #1dbbdd44, #93f9b944);
-}
+.table-view .virtual-flow .scroll-bar:vertical .thumb,
 .table-view .virtual-flow .scroll-bar:horizontal .thumb {
-    -fx-background-color:  linear-gradient(to right, #1dbbdd44, #93f9b944);
+    -fx-background-color:  scrollbar-dark-color;
 }
 
 .label {
@@ -113,17 +133,29 @@
 }
 
 .button {
-    -fx-text-alignment: center;
-    -fx-font-size: 10px;
+    -fx-background-color: button-dark-color;
+    -fx-border-color: border-light-color;
     -fx-text-fill: text-fill-light-color;
-    -fx-pref-width: 140;
-    -fx-border-color: black;
-    -fx-border-radius: 5px;
-    -fx-background-color: button-base-color;
-    -fx-background-radius: 5px;
+    -fx-text-alignment: center;
+    -fx-font-size: 11px;
+    -fx-pref-width: 130;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
 }
 
 .button:hover {
-    -fx-background-color: button-hover-color;
+    -fx-background-color: button-hover-dark-color;
 }
+
+.button:focused {
+    -fx-underline: true;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-background-color: text-filed-background-color;
+    -fx-text-fill: text-fill-light-color;
+}
+
+
 

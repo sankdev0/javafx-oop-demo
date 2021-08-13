@@ -1,14 +1,12 @@
-package com.sankdev.locale;
+package com.sankdev.multilang;
 
-import java.util.ListResourceBundle;
-
-public class GuiResourceBundle extends ListResourceBundle {
+public class GuiResourceBundle_en_US extends GuiResourceBundle {
 
   @Override
   protected Object[][] getContents() {
     return new Object[][]{
         // LOCALIZE THIS
-        {"appTitle", "Student works portfolio tracking"}, {"editWindowTitle", "Edit item"},
+        {"appTitle", "My Portfolio"}, {"editWindowTitle", "Edit item"},
         {"okKey", "OK"}, {"cancelKey", "Cancel"}, {"editButton", "Edit"},
         {"deleteButton", "Delete"},
         {"addButton", "Create"}, {"saveButton", "Save"}, {"loadButton", "Load"},

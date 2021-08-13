@@ -39,15 +39,17 @@ public class App extends Application {
 
   public static final String PRIMARY_VIEW = "primary";
   public static final String EDIT_ITEM_VIEW = "editItem";
+  public static final int PRIMARY_WIDTH = 550;
+  public static final int PRIMARY_HEIGHT = 350;
 
   private static final ResourceBundle theGuiResourceBundle = ResourceBundle.getBundle(
-      "com.sankdev.locale.GuiResourceBundle", Locale.getDefault());
+      "com.sankdev.multilang.GuiResourceBundle", Locale.getDefault());
 
   private static Scene scene;
 
   @Override
   public void start(Stage stage) throws IOException {
-    scene = new Scene(loadFXML("primary"), 600, 400);
+    scene = new Scene(loadFXML("primary"), App.PRIMARY_WIDTH, App.PRIMARY_HEIGHT);
     stage.setScene(scene);
     stage.setTitle(theGuiResourceBundle.getString("appTitle"));
     stage.show();

@@ -1,4 +1,4 @@
-package com.sankdev.locale;
+package com.sankdev.multilang;
 
 public class GuiResourceBundle_ru_RU extends GuiResourceBundle {
 
@@ -6,7 +6,7 @@ public class GuiResourceBundle_ru_RU extends GuiResourceBundle {
   protected Object[][] getContents() {
     return new Object[][]{
         // LOCALIZE THIS
-        {"appTitle", "Портфолио студенческих работ"},
+        {"appTitle", "Мое портфолио"},
         {"editWindowTitle", "Редактирование информации о работе"}, {"okKey", "Ок"},
         {"cancelKey", "Отмена"}, {"editButton", "Редактировать"}, {"deleteButton", "Удалить"},
         {"addButton", "Добавить"}, {"saveButton", "Сохранить"}, {"loadButton", "Загрузить"},
