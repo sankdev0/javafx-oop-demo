@@ -17,6 +17,12 @@ Naming notes:
     -fx-font-size: 11px;
 }
 
+.scroll-pane {
+    -fx-fit-to-width: true;
+    -fx-fit-to-height: true;
+    -fx-pannable: true;
+}
+
 .border-pane {
     -fx-background-color: base-dark-color;
     -fx-text-fill: text-fill-light-color;
@@ -157,5 +163,9 @@ Naming notes:
     -fx-text-fill: text-fill-light-color;
 }
 
+.form-header {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
 
 

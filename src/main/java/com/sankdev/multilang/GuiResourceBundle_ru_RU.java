@@ -10,8 +10,17 @@ public class GuiResourceBundle_ru_RU extends GuiResourceBundle {
         {"editWindowTitle", "Редактирование информации о работе"}, {"okKey", "Ок"},
         {"cancelKey", "Отмена"}, {"editButton", "Редактировать"}, {"deleteButton", "Удалить"},
         {"addButton", "Добавить"}, {"saveButton", "Сохранить"}, {"loadButton", "Загрузить"},
-        {"addItemText", "Введите информацию о новом элементе портфолио:"},
-        {"editItemText", "Внесите необходимые исправления"}
+        {"editItemText", "Введите информацию об элементе портфолио:"},
+        {"itemIdLabel", "Номер"},
+        {"itemNameLabel", "Наименование"},
+        {"itemYearLabel", "Год"},
+        {"itemDescriptionLabel", "Описание"},
+        {"itemCertifyingBodyLabel", "Организация"},
+        {"itemEditionBodyLabel", "Издание"},
+        {"itemPrintCountLabel", "Тираж издания"},
+        {"itemYearOfExpirationLabel", "Год окончания срока действия"},
+        {"itemDegreeLevelLabel", "Уровень диплома об образовании"},
+        {"itemTypeLabel", "Тип элемента"}
         // END OF MATERIAL TO LOCALIZE
     };
   }

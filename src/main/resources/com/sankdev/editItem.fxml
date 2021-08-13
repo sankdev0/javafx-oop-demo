@@ -6,22 +6,57 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Insets?>
-<VBox styleClass="v-box" fx:id="editVBox" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171"
-  xmlns:fx="http://javafx.com/fxml/1"
-  fx:controller="com.sankdev.controller.EditItemController"
-stylesheets="@css/base.css">
-    <children>
-        <Label text="%addItemText" />
-        <Label text="ID: " />
-        <TextField styleClass="text-field" fx:id="itemId" />
-        <Label text="NAME: " />
-        <TextField fx:id="itemName" />
-        <HBox styleClass="h-box">
-            <Button fx:id="okButton" text="%okKey" onAction="#saveItem"/>
-            <Button fx:id="cancelButton" text="%cancelKey" onAction="#switchToPrimary" />
-            <padding>
-                <Insets top="20.0"/>
-            </padding>
-        </HBox>
-    </children>
-</VBox>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<ScrollPane xmlns="http://javafx.com/javafx/11.0.4" xmlns:fx="http://javafx.com/fxml/1"
+  stylesheets="@css/base.css" fx:controller="com.sankdev.controller.EditItemController">
+    <VBox styleClass="v-box" fx:id="editVBox">
+        <VBox styleClass="v-box">
+            <Label styleClass="form-header" text="%editItemText"/>
+            <VBox>
+                <Label text="%itemTypeLabel" />
+                <ComboBox fx:id="itemType">
+                </ComboBox>
+            </VBox>
+            <HBox styleClass="h-box">
+                <VBox styleClass="v-box">
+                    <Label text="%itemIdLabel" />
+                    <TextField fx:id="itemId" />
+                    <Label text="%itemNameLabel" />
+                    <TextField fx:id="itemName" />
+                    <Label text="%itemYearLabel" />
+                    <TextField fx:id="itemYear" />
+                    <Label text="%itemDescriptionLabel" />
+                    <TextField fx:id="itemDescription" />
+                </VBox>
+                <VBox styleClass="v-box">
+                    <!-- Achievement -->
+                    <Label text="%itemCertifyingBodyLabel" />
+                    <TextField fx:id="itemCertifyingBody" />
+                    <!-- Patent -->
+                    <Label text="%itemYearOfExpirationLabel" />
+                    <TextField fx:id="itemYearOfExpiration" />
+                    <!-- Diploma -->
+                    <VBox>
+                        <Label text="%itemDegreeLevelLabel" />
+                        <ComboBox fx:id="itemDegreeLevel">
+                        </ComboBox>
+                    </VBox>
+                    <!-- Publication -->
+                    <Label text="%itemEditionBodyLabel" />
+                    <TextField fx:id="itemEditionBody" />
+                    <Label text="%itemPrintCountLabel" />
+                    <TextField fx:id="itemPrintCount" />
+                </VBox>
+            </HBox>
+
+            <HBox styleClass="h-box">
+                <Button fx:id="okButton" text="%okKey" onAction="#saveItem"/>
+                <Button fx:id="cancelButton" text="%cancelKey" onAction="#switchToPrimary" />
+                <padding>
+                    <Insets top="20.0"/>
+                </padding>
+            </HBox>
+        </VBox>
+    </VBox>
+</ScrollPane>

@@ -12,8 +12,17 @@ public class GuiResourceBundle extends ListResourceBundle {
         {"okKey", "OK"}, {"cancelKey", "Cancel"}, {"editButton", "Edit"},
         {"deleteButton", "Delete"},
         {"addButton", "Create"}, {"saveButton", "Save"}, {"loadButton", "Load"},
-        {"addItemText", "Add new Portfolio item details:"},
-        {"editItemText", "Edit the Portfolio item details"}
+        {"editItemText", "Enter Portfolio item details:"},
+        {"itemIdLabel", "Item Id"},
+        {"itemNameLabel", "Item Name"},
+        {"itemYearLabel", "Year"},
+        {"itemDescriptionLabel", "Description"},
+        {"itemCertifyingBodyLabel", "Item Certifying Body"},
+        {"itemEditionBodyLabel", "Item Edition"},
+        {"itemPrintCountLabel", "Item Print Count"},
+        {"itemYearOfExpirationLabel", "Item Year of Expiration"},
+        {"itemDegreeLevelLabel", "Item Degree Level"},
+        {"itemTypeLabel", "Item Type"}
         // END OF MATERIAL TO LOCALIZE
     };
   }
