@@ -2,6 +2,8 @@ package com.sankdev.controller;
 
 import com.sankdev.App;
 import com.sankdev.model.ItemHolder;
+import com.sankdev.model.Model;
+import com.sankdev.model.PortfolioModel;
 import com.sankdev.portfolio.Item;
 import com.sankdev.service.PortfolioService;
 import java.io.IOException;
@@ -18,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class PrimarySceneController {
 
   // Model
+  private Model theModel = PortfolioModel.getModel();
   private final ItemHolder itemHolder = ItemHolder.getInstance();
   private final PortfolioService portfolioService = new PortfolioService();
 
@@ -37,7 +40,7 @@ public class PrimarySceneController {
     idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
     nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-    tableView.setItems(portfolioService.getPortfolioItems());
+    tableView.setItems(theModel.getPortfolioItems());
 
   }
 
@@ -56,16 +59,16 @@ public class PrimarySceneController {
   private void readPortfolio() throws IOException, ClassNotFoundException {
     portfolioService.readPortfolio();
     System.out.println("===>>> Test observable list");
-    System.out.println(portfolioService.getPortfolioItems());
+    System.out.println(theModel.getPortfolioItems());
     System.out.println("===>>> Reading the portfolio");
-    List<Item> items = new ArrayList<>(portfolioService.getPortfolioItems());
+    List<Item> items = new ArrayList<>(theModel.getPortfolioItems());
     for (Item tempItem :
         items) {
       System.out.println("Item read: " + tempItem.getId() + " " + tempItem.getName());
     }
     // TODO find out why this is necessary. Probably because PortfolioDAO INSTANCE is substituted
     //  when deserialized
-    tableView.setItems(portfolioService.getPortfolioItems());
+    tableView.setItems(theModel.getPortfolioItems());
   }
 
   public void onEdit() throws IOException {
