@@ -1,55 +1,30 @@
 package com.sankdev.model;
 
 import com.sankdev.portfolio.Item;
-import com.sankdev.service.PortfolioService;
+import java.io.File;
+import java.io.IOException;
 import javafx.collections.ObservableList;
 
 /**
- * This singleton is used to carry portfolio item data between controllers. It is eager-loaded and
- * reused. Accessed via getModel() method.
+ * This interface represents a model.
  */
-public class PortfolioModel implements Model {
+public interface PortfolioModel {
 
-  private PortfolioService portfolioService;
-  private Class<? extends Item> itemType;
-  private Item item;
-  private static final PortfolioModel INSTANCE = new PortfolioModel();
+  ObservableList<Item> getPortfolioItems();
 
-  private PortfolioModel() {
-    portfolioService = new PortfolioService();
-  }
+  void setPortfolioItems(ObservableList<Item> portfolioItems);
 
-  public static Model getModel() {
-    return INSTANCE;
-  }
+  void addItem(Item item);
 
-  @Override
-  public ObservableList<Item> getPortfolioItems() {
-    return portfolioService.getPortfolioItems();
-  }
+  public void removeItem(Item item);
 
-  @Override
-  public void setItem(Item item, Class<? extends Item> type) {
-    if (item.getClass().getName() == type.getName()) {
-      this.item = item;
-      this.itemType = type;
-    } else {
-      throw new ClassCastException("Wrong item class provided!");
-    }
-  }
+  // This is to store item type and catch Class Cast problems early on.
+  void setPortfolioItem(Item item, Class<? extends Item> type) throws ClassCastException;
 
-  @Override
-  public Item getItem(Class<? extends Item> type) {
-    if (this.item.getClass().getName() == type.getName()) {
-      return this.item;
-    }
-    else {
-      throw new ClassCastException("Wrong item class provided!");
-    }
-  }
+  Item getPortfolioItem(Class<? extends Item> type) throws ClassCastException;
 
-  @Override
-  public void addItem(Item item) {
-    portfolioService.addPortfolioItem(item);
-  }
+  void savePortfolioItems(File file) throws IOException;
+
+  void loadPortfolioItems(File file) throws ClassNotFoundException, IOException;
+
 }

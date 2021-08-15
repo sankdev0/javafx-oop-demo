@@ -1,10 +1,10 @@
 package com.sankdev.controller;
 
 import com.sankdev.App;
-import com.sankdev.model.ItemHolder;
+import com.sankdev.model.PortfolioModel;
+import com.sankdev.model.PortfolioModelImpl;
 import com.sankdev.portfolio.Certificate;
 import com.sankdev.portfolio.Item;
-import com.sankdev.service.PortfolioService;
 import java.io.IOException;
 import java.time.Year;
 import javafx.fxml.FXML;
@@ -19,8 +19,7 @@ import javafx.scene.input.KeyCode;
 public class EditItemController {
 
   // Model
-  private final ItemHolder itemHolder = ItemHolder.getInstance();
-  private static final PortfolioService portfolioService = new PortfolioService();
+  private final PortfolioModel portfolioModel = PortfolioModelImpl.getModel();
 
   @FXML
   private Node editVBox;
@@ -34,9 +33,9 @@ public class EditItemController {
   // Automatically called by FXML Loader
   // NOTE: Good place to hook onto the model
   public void initialize() {
-    if (itemHolder.getItem() != null) {
-      this.itemId.setText(itemHolder.getItem().getId());
-      this.itemName.setText(itemHolder.getItem().getName());
+    if (portfolioModel.getPortfolioItem(Item.class) != null) {
+      this.itemId.setText(portfolioModel.getPortfolioItem(Item.class).getId());
+      this.itemName.setText(portfolioModel.getPortfolioItem(Item.class).getName());
     }
     setDefaultKeyHandling(editVBox);
     setDefaultKeyHandling(okButton);
@@ -63,14 +62,14 @@ public class EditItemController {
 
   @FXML
   private void saveItem() throws IOException {
-    if (itemHolder.getItem() != null) {
-      Item editedItem = itemHolder.getItem();
+    if (portfolioModel.getPortfolioItem(Item.class) != null) {
+      Item editedItem = portfolioModel.getPortfolioItem(Item.class);
       editedItem.setId(this.itemId.getText());
       editedItem.setName(this.itemName.getText());
     } else {
       Item newItem = new Certificate(this.itemId.getText(), this.itemName.getText(),
           Year.of(2019), "Синергия");
-      portfolioService.addPortfolioItem(newItem);
+      portfolioModel.addItem(newItem);
     }
     App.setRoot(App.PRIMARY_VIEW);
   }

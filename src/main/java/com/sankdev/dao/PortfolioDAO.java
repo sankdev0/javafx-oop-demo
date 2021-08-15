@@ -5,6 +5,7 @@ import com.sankdev.portfolio.Diploma;
 import com.sankdev.portfolio.Diploma.Degree;
 import com.sankdev.portfolio.Item;
 import com.sankdev.portfolio.Publication;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,99 +17,65 @@ import java.io.Serializable;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 /**
- * DAO container serves as an in-memory storage for a list of portfolio items. For the demo
- * purposes it is a singleton now. NOTE: Eager Loaded!
+ * DAO container serves as an in-memory storage for a list of portfolio items.
  */
 public class PortfolioDAO implements Serializable {
 
-  private static final long serialVersionUID = -760476693155737115L;
+  private List<Item> items;
 
-  private static volatile PortfolioDAO INSTANCE = new PortfolioDAO();
-
-  // Observable type to track changes in a corresponding GUI view
-  private transient ObservableList<Item> observableItems;
-
-  private PortfolioDAO() {
-    System.out.println("===>>> Inside Portfolio constructor. Adding sample data.");
-    observableItems = FXCollections.observableArrayList();
-    observableItems.add(new Certificate("x26-1122", "Сертификат по курсу \" Бухгалтерия 1С\"",
+  public PortfolioDAO() {
+    System.out.println("===>>> Inside PortfolioDAO constructor. Adding sample data.");
+    items = new ArrayList<>();
+    items.add(new Certificate("x26-1122", "Сертификат по курсу \" Бухгалтерия 1С\"",
         Year.of(2016), "Институт 1С"));
-    observableItems.add(new Diploma("ВОУ111222", "Диплом о высшем профессиональном образовании",
+    items.add(new Diploma("ВОУ111222", "Диплом о высшем профессиональном образовании",
         Year.of(2014), "Оренбургский Государственный Университет", Degree.HIGHER));
-    observableItems.add(new Publication("ESPN8080009", "Использование 1С в бухгалтерском учете",
+    items.add(new Publication("ESPN8080009", "Использование 1С в бухгалтерском учете",
         Year.of(2018), "Эксперт", 2_000));
     for (Item tempItem :
-        observableItems) {
+        items) {
       System.out.println(tempItem);
     }
   }
 
-  public static PortfolioDAO getInstance() {
-    return INSTANCE;
+  public List<Item> getItems() {
+    return items;
   }
 
-  public ObservableList<Item> getObservableItems() {
-    return observableItems;
+  public void setItems(List<Item> items) {
+    this.items = items;
   }
 
-  public void setObservableItems(
-      ObservableList<Item> observableItems) {
-    this.observableItems = observableItems;
-  }
-
-  // for Custom Serialization
-  private void writeObject(ObjectOutputStream oos)
-      throws IOException {
-    oos.defaultWriteObject();
-    List<Item> items = new ArrayList<>(observableItems);
-    oos.writeObject(items);
-  }
-
-  // for Custom Serialization
-  private void readObject(ObjectInputStream ois)
-      throws ClassNotFoundException, IOException {
-    ois.defaultReadObject();
-    @SuppressWarnings("unchecked")
-    List<Item> items = (List<Item>) ois.readObject();
-    ObservableList<Item> observableList = FXCollections.observableList(items);
-    this.setObservableItems(observableList);
-  }
-
-
-  /* this is to ensure the Singleton instance is deserialized properly
-  protected Object readResolve() throws ObjectStreamException {
-    return INSTANCE;
-  }
-   */
-
-
-  public void addObservableItem(Item item) {
-    if (observableItems == null) {
-      observableItems = FXCollections.observableArrayList();
+  public void addItem(Item item) {
+    if (items == null) {
+      items = new ArrayList<>();
     }
-    observableItems.add(item);
+    items.add(item);
   }
 
-  public void writePortfolio() throws IOException {
-    String fileName = "C:\\repos\\javafx-oop-demo-files\\portfolio.ser";
-    ObjectOutput objectOutput = new ObjectOutputStream(new FileOutputStream(fileName));
-    objectOutput.writeObject(INSTANCE);
-    objectOutput.flush();
-    objectOutput.close();
+  public void removeItem(Item item) {
+    items.remove(item);
   }
 
-  public void readPortfolio() throws IOException, ClassNotFoundException {
-    String fileName = "C:\\repos\\javafx-oop-demo-files\\portfolio.ser";
-    ObjectInput objectInput = new ObjectInputStream(new FileInputStream(fileName));
-    INSTANCE = (PortfolioDAO) objectInput.readObject();
-    objectInput.close();
+  /**
+   * Serialize the list of items into file
+   */
+  public void saveItems(File file) throws IOException {
+    String fileName = "G:\\repos\\javafx-oop-demo-files\\items.ser";
+    ObjectOutput oo = new ObjectOutputStream(new FileOutputStream(fileName));
+    oo.writeObject(items);
+    oo.flush();
+    oo.close();
   }
 
-  public void deleteItem(Item item) {
-    observableItems.remove(item);
+  public void loadItems(File file) throws IOException, ClassNotFoundException {
+    String fileName = "G:\\repos\\javafx-oop-demo-files\\items.ser";
+    ObjectInput oi = new ObjectInputStream(new FileInputStream(fileName));
+    List<Item> loadedItems = (List<Item>) oi.readObject();
+    items = loadedItems;
+    oi.close();
   }
+
 }

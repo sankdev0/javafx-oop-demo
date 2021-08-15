@@ -1,11 +1,9 @@
 package com.sankdev.controller;
 
 import com.sankdev.App;
-import com.sankdev.model.ItemHolder;
-import com.sankdev.model.Model;
 import com.sankdev.model.PortfolioModel;
+import com.sankdev.model.PortfolioModelImpl;
 import com.sankdev.portfolio.Item;
-import com.sankdev.service.PortfolioService;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class PrimarySceneController {
 
   // Model
-  private Model theModel = PortfolioModel.getModel();
-  private final ItemHolder itemHolder = ItemHolder.getInstance();
-  private final PortfolioService portfolioService = new PortfolioService();
+  private PortfolioModel portfolioModel = PortfolioModelImpl.getModel();
 
   // Primary scene control bindings
   @FXML
@@ -40,41 +36,41 @@ public class PrimarySceneController {
     idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
     nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-    tableView.setItems(theModel.getPortfolioItems());
+    tableView.setItems(portfolioModel.getPortfolioItems());
 
   }
 
   @FXML
   private void onAdd() throws IOException {
-    itemHolder.setItem(null);
+    portfolioModel.setPortfolioItem(null, Item.class);
     App.setRoot(App.EDIT_ITEM_VIEW);
   }
 
   @FXML
-  private void writePortfolio() throws IOException {
-    portfolioService.writePortfolio();
+  private void savePortfolioItems() throws IOException {
+    portfolioModel.savePortfolioItems(null);
   }
 
   @FXML
-  private void readPortfolio() throws IOException, ClassNotFoundException {
-    portfolioService.readPortfolio();
+  private void loadPortfolioItems() throws IOException, ClassNotFoundException {
+    portfolioModel.loadPortfolioItems(null);
     System.out.println("===>>> Test observable list");
-    System.out.println(theModel.getPortfolioItems());
+    System.out.println(portfolioModel.getPortfolioItems());
     System.out.println("===>>> Reading the portfolio");
-    List<Item> items = new ArrayList<>(theModel.getPortfolioItems());
+    List<Item> items = new ArrayList<>(portfolioModel.getPortfolioItems());
     for (Item tempItem :
         items) {
       System.out.println("Item read: " + tempItem.getId() + " " + tempItem.getName());
     }
     // TODO find out why this is necessary. Probably because PortfolioDAO INSTANCE is substituted
     //  when deserialized
-    tableView.setItems(theModel.getPortfolioItems());
+    tableView.setItems(portfolioModel.getPortfolioItems());
   }
 
   public void onEdit() throws IOException {
     if (tableView.getSelectionModel().getSelectedItem() != null) {
       Item selectedItem = tableView.getSelectionModel().getSelectedItem();
-      itemHolder.setItem(selectedItem);
+      portfolioModel.setPortfolioItem(selectedItem, Item.class);
       App.setRoot(App.EDIT_ITEM_VIEW);
     }
   }
@@ -82,7 +78,7 @@ public class PrimarySceneController {
   public void onDelete() {
     if (tableView.getSelectionModel().getSelectedItem() != null) {
       Item selectedItem = tableView.getSelectionModel().getSelectedItem();
-      portfolioService.deleteItem(selectedItem);
+      portfolioModel.removeItem(selectedItem);
     }
   }
 }
