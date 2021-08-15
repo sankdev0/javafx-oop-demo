@@ -18,10 +18,9 @@ public interface PortfolioModel {
 
   public void removeItem(Item item);
 
-  // This is to store item type and catch Class Cast problems early on.
-  void setPortfolioItem(Item item, Class<? extends Item> type) throws ClassCastException;
+  void setPortfolioItem(Item item);
 
-  Item getPortfolioItem(Class<? extends Item> type) throws ClassCastException;
+  Item getPortfolioItem();
 
   void savePortfolioItems(File file) throws IOException;
 

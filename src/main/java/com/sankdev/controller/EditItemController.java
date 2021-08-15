@@ -33,9 +33,9 @@ public class EditItemController {
   // Automatically called by FXML Loader
   // NOTE: Good place to hook onto the model
   public void initialize() {
-    if (portfolioModel.getPortfolioItem(Item.class) != null) {
-      this.itemId.setText(portfolioModel.getPortfolioItem(Item.class).getId());
-      this.itemName.setText(portfolioModel.getPortfolioItem(Item.class).getName());
+    if (portfolioModel.getPortfolioItem() != null) {
+      this.itemId.setText(portfolioModel.getPortfolioItem().getId());
+      this.itemName.setText(portfolioModel.getPortfolioItem().getName());
     }
     setDefaultKeyHandling(editVBox);
     setDefaultKeyHandling(okButton);
@@ -62,8 +62,8 @@ public class EditItemController {
 
   @FXML
   private void saveItem() throws IOException {
-    if (portfolioModel.getPortfolioItem(Item.class) != null) {
-      Item editedItem = portfolioModel.getPortfolioItem(Item.class);
+    if (portfolioModel.getPortfolioItem() != null) {
+      Item editedItem = portfolioModel.getPortfolioItem();
       editedItem.setId(this.itemId.getText());
       editedItem.setName(this.itemName.getText());
     } else {

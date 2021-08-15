@@ -3,6 +3,7 @@ package com.sankdev.controller;
 import com.sankdev.App;
 import com.sankdev.model.PortfolioModel;
 import com.sankdev.model.PortfolioModelImpl;
+import com.sankdev.portfolio.Certificate;
 import com.sankdev.portfolio.Item;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,8 +43,24 @@ public class PrimarySceneController {
 
   @FXML
   private void onAdd() throws IOException {
-    portfolioModel.setPortfolioItem(null, Item.class);
+    portfolioModel.setPortfolioItem(null);
     App.setRoot(App.EDIT_ITEM_VIEW);
+  }
+
+  public void onEdit() throws IOException {
+    if (tableView.getSelectionModel().getSelectedItem() != null) {
+      Item selectedItem = tableView.getSelectionModel().getSelectedItem();
+      portfolioModel.setPortfolioItem(selectedItem);
+      App.setRoot(App.EDIT_ITEM_VIEW);
+    }
+  }
+
+  public void onDelete() {
+    if (tableView.getSelectionModel().getSelectedItem() != null) {
+      Item selectedItem = tableView.getSelectionModel().getSelectedItem();
+      portfolioModel.removeItem(selectedItem);
+      tableView.setItems(portfolioModel.getPortfolioItems());
+    }
   }
 
   @FXML
@@ -67,18 +84,4 @@ public class PrimarySceneController {
     tableView.setItems(portfolioModel.getPortfolioItems());
   }
 
-  public void onEdit() throws IOException {
-    if (tableView.getSelectionModel().getSelectedItem() != null) {
-      Item selectedItem = tableView.getSelectionModel().getSelectedItem();
-      portfolioModel.setPortfolioItem(selectedItem, Item.class);
-      App.setRoot(App.EDIT_ITEM_VIEW);
-    }
-  }
-
-  public void onDelete() {
-    if (tableView.getSelectionModel().getSelectedItem() != null) {
-      Item selectedItem = tableView.getSelectionModel().getSelectedItem();
-      portfolioModel.removeItem(selectedItem);
-    }
-  }
 }
