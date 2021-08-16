@@ -15,7 +15,7 @@
             <Label styleClass="form-header" text="%editItemText"/>
             <VBox>
                 <Label text="%itemTypeLabel" />
-                <ComboBox fx:id="itemType" prefWidth="200">
+                <ComboBox fx:id="itemTypeCBox" prefWidth="400">
                 </ComboBox>
                 <padding>
                     <Insets top="20.0" bottom="30.0"/>
@@ -24,32 +24,32 @@
             <HBox styleClass="h-box">
                 <VBox styleClass="v-box">
                     <Label text="%itemIdLabel" />
-                    <TextField fx:id="itemId" />
+                    <TextField fx:id="itemIdTxt"/>
                     <Label text="%itemNameLabel" />
-                    <TextField fx:id="itemName" />
+                    <TextField fx:id="itemNameTxt"/>
                     <Label text="%itemYearLabel" />
-                    <TextField fx:id="itemYear" />
+                    <TextField fx:id="itemYearTxt"/>
                     <Label text="%itemDescriptionLabel" />
-                    <TextField fx:id="itemDescription" />
+                    <TextField fx:id="itemDescriptionTxt"/>
                 </VBox>
-                <VBox styleClass="v-box">
+                <VBox fx:id="itemSpecificDetails" styleClass="v-box">
                     <!-- Achievement -->
-                    <Label text="%itemCertifyingBodyLabel" />
-                    <TextField fx:id="itemCertifyingBody" />
+                    <Label fx:id="itemCertifyingBodyLbl" text="%itemCertifyingBodyLabel" />
+                    <TextField fx:id="itemCertifyingBodyTxt"/>
                     <!-- Patent -->
-                    <Label text="%itemYearOfExpirationLabel" />
-                    <TextField fx:id="itemYearOfExpiration" />
+                    <Label fx:id="itemYearOfExpirationLbl" text="%itemYearOfExpirationLabel" />
+                    <TextField fx:id="itemYearOfExpirationTxt"/>
                     <!-- Diploma -->
-                    <VBox>
-                        <Label text="%itemDegreeLevelLabel" />
-                        <ComboBox fx:id="itemDegreeLevel" prefWidth="200">
+                    <VBox fx:id="itemDegreeLevelVBox">
+                        <Label fx:id="itemDegreeLevelLbl" text="%itemDegreeLevelLabel" />
+                        <ComboBox fx:id="itemDegreeLevelCBox" prefWidth="200">
                         </ComboBox>
                     </VBox>
                     <!-- Publication -->
-                    <Label text="%itemEditionBodyLabel" />
-                    <TextField fx:id="itemEditionBody" />
-                    <Label text="%itemPrintCountLabel" />
-                    <TextField fx:id="itemPrintCount" />
+                    <Label fx:id="itemEditionLbl" text="%itemEditionLabel" />
+                    <TextField fx:id="itemEditionTxt" />
+                    <Label fx:id="itemPrintCountLbl" text="%itemPrintCountLabel" />
+                    <TextField fx:id="itemPrintCountTxt" />
                 </VBox>
             </HBox>
 

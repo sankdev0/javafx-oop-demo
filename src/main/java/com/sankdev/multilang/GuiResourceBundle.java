@@ -18,11 +18,17 @@ public class GuiResourceBundle extends ListResourceBundle {
         {"itemYearLabel", "Year"},
         {"itemDescriptionLabel", "Description"},
         {"itemCertifyingBodyLabel", "Item Certifying Body"},
-        {"itemEditionBodyLabel", "Item Edition"},
+        {"itemEditionLabel", "Item Edition"},
         {"itemPrintCountLabel", "Item Print Count"},
         {"itemYearOfExpirationLabel", "Item Year of Expiration"},
         {"itemDegreeLevelLabel", "Item Degree Level"},
-        {"itemTypeLabel", "Item Type"}
+        {"itemTypeLabel", "Item Type"},
+        {"itemTypeCBoxPrompt", "Choose the portfolio item type"},
+        {"CertificateType", "Certificate"},
+        {"DiplomaType", "Diploma"},
+        {"PatentType", "Patent"},
+        {"PublicationType", "Publication"}
+
         // END OF MATERIAL TO LOCALIZE
     };
   }

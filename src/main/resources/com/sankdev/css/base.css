@@ -15,6 +15,7 @@ Naming notes:
     text-field-background-color: #656565;
     text-fill-light-color: #d3d3d3;
     text-fill-highlighted-color: #ffffff;
+    text-fill-prompt-color: #858585;
     -fx-font-size: 11px;
 }
 

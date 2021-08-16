@@ -42,7 +42,7 @@ public class App extends Application {
   public static final int PRIMARY_WIDTH = 550;
   public static final int PRIMARY_HEIGHT = 450;
 
-  private static final ResourceBundle theGuiResourceBundle = ResourceBundle.getBundle(
+  private static final ResourceBundle guiResourceBundle = ResourceBundle.getBundle(
       "com.sankdev.multilang.GuiResourceBundle", Locale.getDefault());
 
   private static Scene scene;
@@ -51,7 +51,7 @@ public class App extends Application {
   public void start(Stage stage) throws IOException {
     scene = new Scene(loadFXML("primary"), App.PRIMARY_WIDTH, App.PRIMARY_HEIGHT);
     stage.setScene(scene);
-    stage.setTitle(theGuiResourceBundle.getString("appTitle"));
+    stage.setTitle(guiResourceBundle.getString("appTitle"));
     stage.show();
   }
 
@@ -61,7 +61,7 @@ public class App extends Application {
 
   private static Parent loadFXML(String fxml) throws IOException {
     FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"),
-        theGuiResourceBundle);
+        guiResourceBundle);
     return fxmlLoader.load();
   }
 

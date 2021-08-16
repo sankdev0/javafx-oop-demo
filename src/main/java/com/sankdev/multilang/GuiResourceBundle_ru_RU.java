@@ -16,11 +16,16 @@ public class GuiResourceBundle_ru_RU extends GuiResourceBundle {
         {"itemYearLabel", "Год"},
         {"itemDescriptionLabel", "Описание"},
         {"itemCertifyingBodyLabel", "Организация"},
-        {"itemEditionBodyLabel", "Издание"},
+        {"itemEditionLabel", "Издание"},
         {"itemPrintCountLabel", "Тираж издания"},
         {"itemYearOfExpirationLabel", "Год окончания срока действия"},
         {"itemDegreeLevelLabel", "Уровень диплома об образовании"},
-        {"itemTypeLabel", "Тип элемента"}
+        {"itemTypeCBoxPrompt", "Выберите тип элемента портфолио"},
+        {"itemTypeLabel", "Тип элемента"},
+        {"CertificateType", "Сертификат"},
+        {"DiplomaType", "Диплом об образовании"},
+        {"PatentType", "Патент"},
+        {"PublicationType", "Публикация"}
         // END OF MATERIAL TO LOCALIZE
     };
   }
