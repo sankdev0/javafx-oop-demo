@@ -63,7 +63,7 @@ public class PortfolioDAO implements Serializable {
    * Serialize the list of items into file
    */
   public void saveItems(File file) throws IOException {
-    String fileName = "G:\\repos\\javafx-oop-demo-files\\items.ser";
+    String fileName = "C:\\repos\\javafx-oop-demo-files\\items.ser";
     ObjectOutput oo = new ObjectOutputStream(new FileOutputStream(fileName));
     oo.writeObject(items);
     oo.flush();
@@ -71,7 +71,7 @@ public class PortfolioDAO implements Serializable {
   }
 
   public void loadItems(File file) throws IOException, ClassNotFoundException {
-    String fileName = "G:\\repos\\javafx-oop-demo-files\\items.ser";
+    String fileName = "C:\\repos\\javafx-oop-demo-files\\items.ser";
     ObjectInput oi = new ObjectInputStream(new FileInputStream(fileName));
     List<Item> loadedItems = (List<Item>) oi.readObject();
     items = loadedItems;

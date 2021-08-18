@@ -48,6 +48,11 @@ Naming notes:
     -fx-spacing: 3;
 }
 
+.h-box-control-keys {
+    -fx-alignment: top-center;
+    -fx-spacing: 3;
+}
+
 .table-view {
     -fx-background-color: transparent;
 }

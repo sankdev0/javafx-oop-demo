@@ -27,7 +27,12 @@ public class GuiResourceBundle extends ListResourceBundle {
         {"CertificateType", "Certificate"},
         {"DiplomaType", "Diploma"},
         {"PatentType", "Patent"},
-        {"PublicationType", "Publication"}
+        {"PublicationType", "Publication"},
+        {"HIGH", "High School"},
+        {"HIGHER", "Higher education"},
+        {"MASTERS", "Master's degree"},
+        {"DOCTOR", "PhD"},
+        {"itemDegreeLevelCBoxPromptText", "Choose Degree Level"}
 
         // END OF MATERIAL TO LOCALIZE
     };

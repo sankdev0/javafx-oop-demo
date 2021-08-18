@@ -25,7 +25,12 @@ public class GuiResourceBundle_ru_RU extends GuiResourceBundle {
         {"CertificateType", "Сертификат"},
         {"DiplomaType", "Диплом об образовании"},
         {"PatentType", "Патент"},
-        {"PublicationType", "Публикация"}
+        {"PublicationType", "Публикация"},
+        {"HIGH", "Среднее"},
+        {"HIGHER", "Высшее"},
+        {"MASTERS", "Степень Магистра"},
+        {"DOCTOR", "Докторская степень"},
+        {"itemDegreeLevelCBoxPromptText", "Выберите уровень образования"}
         // END OF MATERIAL TO LOCALIZE
     };
   }

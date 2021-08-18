@@ -15,14 +15,14 @@
             <Label styleClass="form-header" text="%editItemText"/>
             <VBox>
                 <Label text="%itemTypeLabel" />
-                <ComboBox fx:id="itemTypeCBox" prefWidth="400">
+                <ComboBox fx:id="itemTypeCBox" prefWidth="400" onAction="#rebuildItemView">
                 </ComboBox>
                 <padding>
                     <Insets top="20.0" bottom="30.0"/>
                 </padding>
             </VBox>
             <HBox styleClass="h-box">
-                <VBox styleClass="v-box">
+                <VBox styleClass="v-box"  prefWidth="250">
                     <Label text="%itemIdLabel" />
                     <TextField fx:id="itemIdTxt"/>
                     <Label text="%itemNameLabel" />
@@ -32,7 +32,7 @@
                     <Label text="%itemDescriptionLabel" />
                     <TextField fx:id="itemDescriptionTxt"/>
                 </VBox>
-                <VBox fx:id="itemSpecificDetails" styleClass="v-box">
+                <VBox fx:id="itemSpecificDetails" styleClass="v-box"  prefWidth="250">
                     <!-- Achievement -->
                     <Label fx:id="itemCertifyingBodyLbl" text="%itemCertifyingBodyLabel" />
                     <TextField fx:id="itemCertifyingBodyTxt"/>
@@ -42,7 +42,7 @@
                     <!-- Diploma -->
                     <VBox fx:id="itemDegreeLevelVBox">
                         <Label fx:id="itemDegreeLevelLbl" text="%itemDegreeLevelLabel" />
-                        <ComboBox fx:id="itemDegreeLevelCBox" prefWidth="200">
+                        <ComboBox fx:id="itemDegreeLevelCBox">
                         </ComboBox>
                     </VBox>
                     <!-- Publication -->
@@ -53,7 +53,7 @@
                 </VBox>
             </HBox>
 
-            <HBox styleClass="h-box">
+            <HBox styleClass="h-box-control-keys">
                 <Button fx:id="okButton" text="%okKey" onAction="#saveItem"/>
                 <Button fx:id="cancelButton" text="%cancelKey" onAction="#switchToPrimary" />
                 <padding>
