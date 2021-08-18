@@ -22,7 +22,7 @@
                 </padding>
             </VBox>
             <HBox styleClass="h-box">
-                <VBox styleClass="v-box"  prefWidth="250">
+                <VBox styleClass="v-box"  prefWidth="300">
                     <Label text="%itemIdLabel" />
                     <TextField fx:id="itemIdTxt"/>
                     <Label text="%itemNameLabel" />
@@ -32,7 +32,7 @@
                     <Label text="%itemDescriptionLabel" />
                     <TextField fx:id="itemDescriptionTxt"/>
                 </VBox>
-                <VBox fx:id="itemSpecificDetails" styleClass="v-box"  prefWidth="250">
+                <VBox fx:id="itemSpecificDetails" styleClass="v-box"  prefWidth="300">
                     <!-- Achievement -->
                     <Label fx:id="itemCertifyingBodyLbl" text="%itemCertifyingBodyLabel" />
                     <TextField fx:id="itemCertifyingBodyTxt"/>

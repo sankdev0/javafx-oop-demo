@@ -23,7 +23,7 @@ public class GuiResourceBundle_ru_RU extends GuiResourceBundle {
         {"itemTypeCBoxPrompt", "Выберите тип элемента портфолио"},
         {"itemTypeLabel", "Тип элемента"},
         {"CertificateType", "Сертификат"},
-        {"DiplomaType", "Диплом об образовании"},
+        {"DiplomaType", "Диплом"},
         {"PatentType", "Патент"},
         {"PublicationType", "Публикация"},
         {"HIGH", "Среднее"},

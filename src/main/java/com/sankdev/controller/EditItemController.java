@@ -5,11 +5,13 @@ import com.sankdev.model.PortfolioModel;
 import com.sankdev.model.PortfolioModelImpl;
 import com.sankdev.portfolio.Certificate;
 import com.sankdev.portfolio.Diploma;
+import com.sankdev.portfolio.Diploma.Degree;
 import com.sankdev.portfolio.Item;
 import com.sankdev.portfolio.Patent;
 import com.sankdev.portfolio.Publication;
 import java.io.IOException;
 import java.time.Year;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -26,8 +28,7 @@ import javafx.scene.layout.VBox;
  */
 public class EditItemController {
 
-  // Model
-  private final PortfolioModel portfolioModel = PortfolioModelImpl.getModel();
+  // Helper strings
   private static final ResourceBundle guiResourceBundle = ResourceBundle.getBundle(
       "com.sankdev.multilang.GuiResourceBundle", Locale.getDefault());
   private String certificate = guiResourceBundle.getString("CertificateType");
@@ -38,6 +39,9 @@ public class EditItemController {
   private String higher = guiResourceBundle.getString("HIGHER");
   private String masters = guiResourceBundle.getString("MASTERS");
   private String doctor = guiResourceBundle.getString("DOCTOR");
+
+  // Model
+  private final PortfolioModel portfolioModel = PortfolioModelImpl.getModel();
 
   @FXML
   public ComboBox itemTypeCBox;
@@ -89,25 +93,41 @@ public class EditItemController {
 
     initItemTypeCBox();
 
+
     if (portfolioModel.getPortfolioItem() == null) {
       itemType = null;
     } else {
-      itemType = portfolioModel.getPortfolioItem().getClass().getSimpleName();
+      Item theItem = portfolioModel.getPortfolioItem();
+      this.itemIdTxt.setText(theItem.getId());
+      this.itemNameTxt.setText(theItem.getName());
+      this.itemYearTxt.setText(
+          theItem.getYear().toString());
+      this.itemDescriptionTxt.setText(theItem.getDescription());
+      itemType = theItem.getClass().getSimpleName();
       System.out.println("itemType: " + itemType);
       if (itemType.equals("Certificate")) {
         itemType = certificate;
+        this.itemTypeCBox.setValue(certificate);
+        this.itemCertifyingBodyTxt.setText(((Certificate) theItem).getCertifyingBody());
       } else if (itemType.equals("Diploma")) {
         itemType = diploma;
+        this.itemTypeCBox.setValue(diploma);
+        this.itemCertifyingBodyTxt.setText(((Diploma) theItem).getCertifyingBody());
+        this.itemDegreeLevelCBox.setValue(retrieveDegreeString(((Diploma) theItem).getDegree()));
       } else if (itemType.equals("Patent")) {
         itemType = patent;
+        this.itemTypeCBox.setValue(patent);
+        this.itemCertifyingBodyTxt.setText(((Patent) theItem).getCertifyingBody());
+        this.itemYearOfExpirationTxt.setText(((Patent)
+            theItem).getYear().toString());
       } else if (itemType.equals("Publication")) {
         itemType = publication;
+        this.itemTypeCBox.setValue(publication);
+        this.itemEditionTxt.setText(((Publication) theItem).getEdition());
+        this.itemPrintCountTxt.setText(String.valueOf(((Publication) theItem).getPrintCount()));
       } else {
         itemType = null;
       }
-
-      this.itemIdTxt.setText(portfolioModel.getPortfolioItem().getId());
-      this.itemNameTxt.setText(portfolioModel.getPortfolioItem().getName());
     }
 
     buildItemSpecificDetailsView(itemType);
@@ -144,20 +164,24 @@ public class EditItemController {
       Item editedItem = portfolioModel.getPortfolioItem();
       editedItem.setId(this.itemIdTxt.getText());
       editedItem.setName(this.itemNameTxt.getText());
+      editedItem.setDescription(this.itemDescriptionTxt.getText());
     } else {
       itemType = String.valueOf(itemTypeCBox.getValue());
       if (itemType.equals(certificate)) {
         Item newItem = new Certificate(this.itemIdTxt.getText(), this.itemNameTxt.getText(),
-            Year.of(Integer.parseInt(this.itemYearTxt.getText())), this.itemCertifyingBodyTxt.getText());
+            Year.of(Integer.parseInt(this.itemYearTxt.getText())),
+            this.itemCertifyingBodyTxt.getText());
         portfolioModel.addItem(newItem);
       } else if (itemType.equals(diploma)) {
         Item newItem = new Diploma(this.itemIdTxt.getText(), this.itemNameTxt.getText(),
-            Year.of(Integer.parseInt(this.itemYearTxt.getText())), this.itemCertifyingBodyTxt.getText(),
+            Year.of(Integer.parseInt(this.itemYearTxt.getText())),
+            this.itemCertifyingBodyTxt.getText(),
             retrieveDegree(String.valueOf(this.itemDegreeLevelCBox.getValue())));
         portfolioModel.addItem(newItem);
       } else if (itemType.equals(patent)) {
         Item newItem = new Patent(this.itemIdTxt.getText(), this.itemNameTxt.getText(),
-            Year.of(Integer.parseInt(this.itemYearTxt.getText())), this.itemCertifyingBodyTxt.getText(),
+            Year.of(Integer.parseInt(this.itemYearTxt.getText())),
+            this.itemCertifyingBodyTxt.getText(),
             Year.of(Integer.parseInt(this.itemYearOfExpirationTxt.getText())));
         portfolioModel.addItem(newItem);
       } else if (itemType.equals(publication)) {
@@ -291,6 +315,20 @@ public class EditItemController {
       return Diploma.Degree.MASTERS;
     } else if (degree.equals(doctor)) {
       return Diploma.Degree.DOCTOR;
+    } else {
+      return null;
+    }
+  }
+
+  private String retrieveDegreeString(Diploma.Degree degree) {
+    if (degree.equals(Degree.HIGH)) {
+      return high;
+    } else if (degree.equals(Degree.HIGHER)) {
+      return higher;
+    } else if (degree.equals(Degree.MASTERS)) {
+      return masters;
+    } else if (degree.equals(Degree.DOCTOR)) {
+      return doctor;
     } else {
       return null;
     }
