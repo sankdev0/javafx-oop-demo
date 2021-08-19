@@ -107,21 +107,29 @@ public class EditItemController {
       System.out.println("itemType: " + itemType);
       if (itemType.equals("Certificate")) {
         itemType = certificate;
+        itemTypeCBox.getItems().clear();
+        itemTypeCBox.getItems().add(certificate);
         this.itemTypeCBox.setValue(certificate);
         this.itemCertifyingBodyTxt.setText(((Certificate) theItem).getCertifyingBody());
       } else if (itemType.equals("Diploma")) {
         itemType = diploma;
+        itemTypeCBox.getItems().clear();
+        itemTypeCBox.getItems().add(diploma);
         this.itemTypeCBox.setValue(diploma);
         this.itemCertifyingBodyTxt.setText(((Diploma) theItem).getCertifyingBody());
         this.itemDegreeLevelCBox.setValue(retrieveDegreeString(((Diploma) theItem).getDegree()));
       } else if (itemType.equals("Patent")) {
         itemType = patent;
+        itemTypeCBox.getItems().clear();
+        itemTypeCBox.getItems().add(patent);
         this.itemTypeCBox.setValue(patent);
         this.itemCertifyingBodyTxt.setText(((Patent) theItem).getCertifyingBody());
         this.itemYearOfExpirationTxt.setText(((Patent)
             theItem).getYear().toString());
       } else if (itemType.equals("Publication")) {
         itemType = publication;
+        itemTypeCBox.getItems().clear();
+        itemTypeCBox.getItems().add(publication);
         this.itemTypeCBox.setValue(publication);
         this.itemEditionTxt.setText(((Publication) theItem).getEdition());
         this.itemPrintCountTxt.setText(String.valueOf(((Publication) theItem).getPrintCount()));
