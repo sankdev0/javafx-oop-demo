@@ -40,7 +40,7 @@ public class App extends Application {
   public static final String PRIMARY_VIEW = "primary";
   public static final String EDIT_ITEM_VIEW = "editItem";
   public static final int PRIMARY_WIDTH = 550;
-  public static final int PRIMARY_HEIGHT = 450;
+  public static final int PRIMARY_HEIGHT = 400;
 
   private static final ResourceBundle guiResourceBundle = ResourceBundle.getBundle(
       "com.sankdev.multilang.GuiResourceBundle", Locale.getDefault());
