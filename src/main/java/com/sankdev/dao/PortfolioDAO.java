@@ -63,16 +63,14 @@ public class PortfolioDAO implements Serializable {
    * Serialize the list of items into file
    */
   public void saveItems(File file) throws IOException {
-    String fileName = "C:\\repos\\javafx-oop-demo-files\\items.ser";
-    ObjectOutput oo = new ObjectOutputStream(new FileOutputStream(fileName));
+    ObjectOutput oo = new ObjectOutputStream(new FileOutputStream(file));
     oo.writeObject(items);
     oo.flush();
     oo.close();
   }
 
   public void loadItems(File file) throws IOException, ClassNotFoundException {
-    String fileName = "C:\\repos\\javafx-oop-demo-files\\items.ser";
-    ObjectInput oi = new ObjectInputStream(new FileInputStream(fileName));
+    ObjectInput oi = new ObjectInputStream(new FileInputStream(file));
     List<Item> loadedItems = (List<Item>) oi.readObject();
     items = loadedItems;
     oi.close();

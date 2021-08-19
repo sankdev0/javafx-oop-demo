@@ -5,6 +5,7 @@ import com.sankdev.model.PortfolioModel;
 import com.sankdev.model.PortfolioModelImpl;
 import com.sankdev.portfolio.Certificate;
 import com.sankdev.portfolio.Item;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.util.Callback;
 
 /**
@@ -36,6 +39,8 @@ public class PrimarySceneController {
   private PortfolioModel portfolioModel = PortfolioModelImpl.getModel();
 
   // Primary scene control bindings
+  @FXML
+  private BorderPane primaryBorderPane; // the root node
   @FXML
   private TableView<Item> tableView;
   @FXML
@@ -109,12 +114,18 @@ public class PrimarySceneController {
 
   @FXML
   private void savePortfolioItems() throws IOException {
-    portfolioModel.savePortfolioItems(null);
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setInitialFileName("items.ser");
+    File selectedFile = fileChooser.showOpenDialog(primaryBorderPane.getScene().getWindow());
+    portfolioModel.savePortfolioItems(selectedFile);
   }
 
   @FXML
   private void loadPortfolioItems() throws IOException, ClassNotFoundException {
-    portfolioModel.loadPortfolioItems(null);
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setInitialFileName("items.ser");
+    File selectedFile = fileChooser.showOpenDialog(primaryBorderPane.getScene().getWindow());
+    portfolioModel.loadPortfolioItems(selectedFile);
     System.out.println("===>>> Test observable list");
     System.out.println(portfolioModel.getPortfolioItems());
     System.out.println("===>>> Reading the portfolio");
